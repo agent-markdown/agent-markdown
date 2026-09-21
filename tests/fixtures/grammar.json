@@ -1,0 +1,65 @@
+[
+  {
+    "name": "double underscore is the deliberate underline override",
+    "source": "__word__",
+    "html": "<p><u>word</u></p>\n",
+    "baselineHTML": "<p><strong>word</strong></p>\n"
+  },
+  {
+    "name": "intraword underscores stay literal",
+    "source": "foo__bar__baz",
+    "html": "<p>foo__bar__baz</p>\n"
+  },
+  {
+    "name": "star strong and underscore italic retain baseline meanings",
+    "source": "**bold** _italic_",
+    "html": "<p><strong>bold</strong> <em>italic</em></p>\n"
+  },
+  {
+    "name": "code is isolated from all inline additions",
+    "source": "`__u__ ||s|| ==h== $x$`",
+    "html": "<p><code>__u__ ||s|| ==h== $x$</code></p>\n"
+  },
+  {
+    "name": "spoiler closure inside code is literal",
+    "source": "||a `||` b||",
+    "html": "<p><spoiler>a <code>||</code> b</spoiler></p>\n"
+  },
+  {
+    "name": "highlight permits normal inline emphasis",
+    "source": "==a **bold** word==",
+    "html": "<p><mark>a <strong>bold</strong> word</mark></p>\n"
+  },
+  {
+    "name": "escaped delimiter is text",
+    "source": "\\_\\_word\\_\\_",
+    "html": "<p>__word__</p>\n"
+  },
+  {
+    "name": "native HTML attributes coexist with optional metadata",
+    "source": "<span title=\"Status\" data-afm-state=\"running\" data-example-job=\"42\">Working</span>",
+    "html": "<p><span title=\"Status\" data-afm-state=\"running\" data-example-job=\"42\">Working</span></p>\n"
+  },
+  {
+    "name": "currency after whitespace is literal",
+    "source": "Cost $ 20",
+    "html": "<p>Cost $ 20</p>\n"
+  },
+  {
+    "name": "tilde code fences remain compatible reader input",
+    "source": "~~~text\n__literal__\n~~~",
+    "html": "<pre><code class=\"language-text\">__literal__\n</code></pre>\n"
+  },
+  {
+    "name": "GFM three-tilde runs stay literal inline",
+    "source": "A ~~~word~~~.",
+    "html": "<p>A ~~~word~~~.</p>\n",
+    "reference": "https://github.github.com/gfm/#strikethrough-extension-"
+  },
+  {
+    "name": "GFM four-tilde runs stay literal inline",
+    "source": "A ~~~~word~~~~.",
+    "html": "<p>A ~~~~word~~~~.</p>\n",
+    "reference": "https://github.github.com/gfm/#strikethrough-extension-"
+  }
+]

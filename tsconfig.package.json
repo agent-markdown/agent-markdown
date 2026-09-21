@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "rootDir": "src",
+    "outDir": "dist/package/types",
+    "types": []
+  },
+  "include": [],
+  "files": ["src/index.ts", "src/diagrams.ts"]
+}

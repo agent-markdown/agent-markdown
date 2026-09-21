@@ -1,0 +1,5 @@
+src/*.generated.ts
+site/
+dist/
+.build/
+node_modules/

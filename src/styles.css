@@ -1,0 +1,650 @@
+/* Reference presentation only. AFM semantics do not mandate these styles. */
+.afm {
+  color: inherit;
+  font: inherit;
+  line-height: 1.6;
+  --line: #e4e4e4;
+  --muted: #777;
+}
+.afm p {
+  margin: 0 0 1em;
+}
+.afm p:last-child {
+  margin-bottom: 0;
+}
+.afm strong {
+  font-weight: 600;
+}
+.afm code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.88em;
+  background: #f5f5f5;
+  padding: 0.1em 0.25em;
+}
+.afm pre {
+  background: #f7f7f7;
+  overflow: auto;
+  padding: 14px;
+  line-height: 1.6;
+  white-space: pre;
+  margin: 1em 0;
+}
+.afm pre code {
+  background: none;
+  padding: 0;
+}
+.afm mark {
+  background: #fff0b5;
+  color: inherit;
+}
+.afm blockquote {
+  border-left: 2px solid #ddd;
+  margin-left: 0;
+  padding-left: 16px;
+  color: #666;
+}
+.afm ul,
+.afm ol {
+  padding-left: 22px;
+}
+.afm li {
+  margin: 5px 0;
+}
+.afm li > p {
+  margin: 0 0 0.4em;
+}
+.afm details {
+  padding: 0;
+  margin: 0.5em 0;
+  border: 0;
+}
+.afm summary {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  line-height: 1.6;
+}
+.afm summary::marker {
+  font-size: 0.8em;
+  color: #777;
+}
+.afm details > :not(summary) {
+  margin-left: 0;
+}
+.afm details > pre {
+  margin-left: 0;
+}
+.afm li.disclosure-item {
+  list-style: none;
+}
+.afm li.disclosure-item > details {
+  margin: 0;
+}
+.afm li.disclosure-item > details > summary {
+  margin-left: -14px;
+}
+.afm [data-afm-type='activity'] {
+  color: #777;
+}
+.afm [data-afm-type='activity'] pre {
+  color: #555;
+}
+.afm [data-afm-type='activity'] time {
+  font: inherit;
+  color: inherit;
+}
+.afm time {
+  font: inherit;
+  color: inherit;
+}
+.afm footer {
+  margin-top: 1em;
+  color: #777;
+}
+.afm footer p {
+  margin: 0;
+}
+.afm section[data-afm-type] {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin: 12px 0;
+  overflow: hidden;
+  padding: 14px 16px;
+}
+.afm section[data-afm-type] > p {
+  margin-bottom: 4px;
+}
+.afm section[data-afm-type] > p:nth-child(2) {
+  color: var(--muted);
+}
+.afm section[data-afm-type] > table {
+  margin: 12px -16px 0;
+  width: calc(100% + 32px);
+}
+.afm section[data-afm-type] > details {
+  margin: 10px 0 0;
+}
+.afm table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+.afm th,
+.afm td {
+  padding: 7px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+.afm th {
+  font-weight: 600;
+}
+.afm td[style],
+.afm th[style] {
+  text-align: inherit;
+}
+.afm form {
+  margin: 1em 0;
+}
+.afm fieldset {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0;
+  min-width: 0;
+  margin: 0 0 10px;
+}
+.afm legend {
+  font-weight: 600;
+  padding: 0 8px;
+  margin-left: 8px;
+}
+.afm label {
+  display: block;
+  line-height: 1.6;
+}
+.afm fieldset > label {
+  padding: 12px 16px;
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+.afm fieldset > label:last-child {
+  border-bottom: 0;
+}
+.afm label > span {
+  display: block;
+  margin-left: 24px;
+  color: #777;
+}
+.afm fieldset > label:has(input:checked) {
+  background: #f6f6f6;
+}
+.afm input {
+  accent-color: #555;
+  margin-right: 7px;
+}
+.afm textarea,
+.afm input[type='text'],
+.afm select {
+  font: inherit;
+  display: block;
+  width: 100%;
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+}
+.afm textarea {
+  min-height: 48px;
+  resize: vertical;
+}
+.afm label > textarea {
+  margin-left: 24px;
+  width: calc(100% - 24px);
+}
+.afm button {
+  font: inherit;
+  padding: 5px 12px;
+  margin: 5px 8px 0 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  color: inherit;
+}
+.afm button[data-afm-variant='primary'] {
+  background: #252525;
+  border-color: #252525;
+  color: white;
+}
+.afm button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.form-result:empty {
+  display: none;
+}
+.form-result {
+  margin-top: 10px !important;
+}
+.afm spoiler {
+  background: #777;
+  color: transparent;
+  border-radius: 3px;
+  padding: 1px 3px;
+  cursor: pointer;
+  user-select: none;
+}
+.afm spoiler.revealed {
+  background: #eee;
+  color: inherit;
+  user-select: text;
+}
+.afm iframe {
+  width: 100%;
+  height: 240px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+}
+.afm img {
+  max-width: 100%;
+}
+.afm .diff {
+  padding: 10px 0;
+}
+.afm .diff > code {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  white-space: normal;
+}
+.diff-line {
+  display: block;
+  white-space: pre;
+  min-height: 1.6em;
+  padding: 0 14px;
+}
+.diff-line.added {
+  background: #edf7ef;
+  color: #256236;
+}
+.diff-line.removed {
+  background: #fff0f0;
+  color: #923737;
+}
+.diff-line.hunk {
+  color: #777;
+}
+.afm .katex-display {
+  overflow: auto;
+  padding: 5px 0;
+}
+.afm .footnotes {
+  margin-top: 1em;
+}
+.afm .footnotes p {
+  margin: 0;
+}
+.afm hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 1.5em 0;
+}
+
+.afm li:has(> input[type='checkbox']),
+.afm li:has(> p > input[type='checkbox']) {
+  list-style: none;
+}
+.afm fieldset > div {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.afm fieldset > div:last-child {
+  border-bottom: 0;
+}
+.afm fieldset > div:has(input:checked) {
+  background: #f6f6f6;
+}
+.afm fieldset > div > textarea {
+  margin-left: 24px;
+  width: calc(100% - 24px);
+}
+
+.afm details > ul,
+.afm details > ol {
+  padding-left: 14px;
+  margin-left: 0;
+}
+.afm-enter {
+  animation: afm-appear 140ms ease-out;
+}
+@keyframes afm-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .afm-enter {
+    animation: none;
+  }
+}
+.afm form[data-afm-type='choices'] fieldset > button {
+  display: block;
+  text-align: left;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  margin: 0;
+  padding: 12px 16px;
+  background: none;
+}
+.afm form[data-afm-type='choices'] button > span {
+  display: block;
+}
+.afm form[data-afm-type='choices'] button > span + span {
+  color: var(--muted);
+}
+.afm form[data-afm-type='choices'] button:hover:not(:disabled) {
+  background: #f6f6f6;
+}
+/* Diagram SVG contains no source styles or foreignObject. Host supplies neutral presentation. */
+.afm [data-diagram] svg {
+  fill: none;
+  stroke: #777;
+  font: 15px system-ui;
+}
+.afm [data-diagram] text,
+.afm [data-diagram] tspan {
+  fill: #252525;
+  stroke: none;
+}
+.afm [data-diagram] .node .text-outer-tspan {
+  text-anchor: middle;
+}
+.afm [data-diagram] .node rect,
+.afm [data-diagram] .node polygon,
+.afm [data-diagram] .node circle,
+.afm [data-diagram] .node path {
+  fill: #f7f7f7;
+  stroke: #999;
+}
+.afm [data-diagram] .flowchart-link {
+  fill: none;
+  stroke: #777;
+}
+.afm [data-diagram] marker path {
+  fill: #777;
+  stroke: #777;
+}
+/* One disclosure gutter and rhythm, independent of authored nesting. */
+.afm details,
+.afm section[data-afm-type] > details {
+  margin: 4px 0;
+  padding: 0;
+}
+.afm summary {
+  display: block;
+  position: relative;
+  list-style: none;
+  padding: 0 0 0 18px;
+  min-height: 24px;
+  line-height: 24px;
+  margin: 0;
+}
+.afm summary::-webkit-details-marker {
+  display: none;
+}
+.afm summary::marker {
+  content: '';
+}
+.afm summary::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-right: 1.3px solid currentColor;
+  border-bottom: 1.3px solid currentColor;
+  transform: rotate(-45deg);
+}
+.afm details[open] > summary::before {
+  transform: rotate(45deg);
+  top: 8px;
+}
+.afm .disclosure-list,
+.afm details > .disclosure-list {
+  padding: 0;
+  margin: 4px 0;
+  list-style: none;
+}
+.afm li.disclosure-item,
+.afm li.disclosure-item > details {
+  padding: 0;
+  margin: 4px 0;
+}
+.afm .disclosure-list > li:not(.disclosure-item) {
+  margin-left: 18px;
+  list-style: disc;
+}
+.afm ol.disclosure-list > li:not(.disclosure-item) {
+  list-style: decimal;
+}
+.afm li.disclosure-item > details > summary {
+  margin: 0;
+}
+.afm details > p,
+.afm details > pre,
+.afm details > .diff-bundle {
+  margin: 4px 0;
+}
+.afm details > p {
+  padding-left: 18px;
+}
+.afm summary code {
+  font: inherit;
+  background: none;
+  padding: 0;
+}
+.afm ul,
+.afm ol {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.afm p {
+  margin-bottom: 8px;
+}
+.afm pre {
+  margin: 8px 0;
+  padding: 10px 12px;
+}
+.afm section[data-afm-type] {
+  margin: 8px 0;
+  padding: 12px;
+}
+.afm [data-diagram] {
+  padding: 8px 0;
+}
+.afm [data-diagram] svg {
+  display: block;
+  max-width: min(100%, 360px);
+  max-height: 180px;
+  font-size: 14px;
+  stroke: #aaa;
+}
+.afm [data-diagram] .node rect,
+.afm [data-diagram] .node polygon {
+  fill: #fafafa;
+  stroke: #ccc;
+  stroke-width: 0.7px;
+}
+.afm [data-diagram] .flowchart-link {
+  stroke: #aaa;
+  stroke-width: 0.8px;
+}
+.afm [data-diagram] marker path {
+  fill: #aaa;
+  stroke: none;
+}
+.afm iframe {
+  display: block;
+  height: 240px;
+  border: 1px solid #e5e5e5;
+}
+/* Patch rows preserve source content; line numbers are a separate gutter. */
+.afm .afm-diff {
+  border: 1px solid #e5e5e5;
+  border-radius: 7px;
+  overflow: hidden;
+  margin: 6px 0;
+  background: white;
+}
+.afm .diff-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: none;
+  padding: 5px 10px;
+  margin: 0;
+  background: #fafafa;
+  border-bottom: 1px solid #e5e5e5;
+  font: 12px/1.6 system-ui;
+  color: #666;
+}
+.afm .diff-count .added {
+  color: #28834b;
+}
+.afm .diff-count .removed {
+  color: #bd4141;
+}
+.afm .diff-scroll {
+  overflow: auto;
+  max-height: 250px;
+}
+.afm .diff-scroll table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font:
+    12px/1.7 ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    monospace;
+}
+.afm .diff-scroll td {
+  padding: 0 8px;
+  border: 0;
+  white-space: pre;
+  vertical-align: top;
+}
+.afm .diff-line {
+  display: table-row;
+  padding: 0;
+  min-height: 0;
+  color: inherit;
+}
+.afm .diff-line.added {
+  background: #eaf6ed;
+}
+.afm .diff-line.removed {
+  background: #fcebe8;
+}
+.afm .diff-line.added td:first-child {
+  border-left: 3px solid #3d9c5b;
+}
+.afm .diff-line.removed td:first-child {
+  border-left: 3px solid #d97065;
+}
+.afm .diff-line td:first-child {
+  border-left: 3px solid transparent;
+}
+.afm .diff-scroll .line-number {
+  width: 1%;
+  min-width: 30px;
+  text-align: right;
+  color: #999;
+  user-select: none;
+  padding: 0 6px;
+}
+.afm .diff-scroll .line-code {
+  width: 100%;
+  color: #333;
+}
+.afm .diff-scroll .diff-hunk td {
+  background: #fafafa;
+  color: #999;
+  font-size: 11px;
+  padding: 2px 8px;
+}
+
+.afm figure {
+  margin: 12px 0;
+}
+.afm figcaption {
+  color: var(--muted, #666);
+  margin-top: 4px;
+}
+.afm img,
+.afm video {
+  max-width: 100%;
+  height: auto;
+}
+.afm audio {
+  max-width: 100%;
+}
+
+/* State drives the treatment; glyphs and motion are optional host presentation. */
+.afm .afm-activity-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 7px;
+  vertical-align: -2px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.afm .afm-activity-label {
+  color: inherit;
+}
+.afm li.activity-item,
+.afm .disclosure-list > li.activity-item {
+  list-style: none;
+  margin: 4px 0;
+  padding: 0;
+}
+.afm li.activity-item > p {
+  margin: 0;
+}
+.afm li.activity-item .afm-activity-header {
+  display: block;
+  padding-left: 18px;
+  line-height: 24px;
+}
+@media (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+  .afm .afm-running > .afm-activity-label {
+    background: linear-gradient(105deg, #666 35%, #aaa 48%, #666 61%);
+    background-size: 250% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: afm-shimmer 3s linear infinite;
+  }
+  .afm .afm-running > .afm-activity-label time {
+    color: inherit;
+  }
+}
+@keyframes afm-shimmer {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

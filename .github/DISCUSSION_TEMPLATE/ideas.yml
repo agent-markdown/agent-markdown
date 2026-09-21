@@ -1,0 +1,29 @@
+title: "[Proposal] "
+body:
+  - type: markdown
+    attributes:
+      value: "AFM is an experimental discussion draft. Start with a concrete output and existing precedent."
+  - type: textarea
+    id: use-case
+    attributes:
+      label: User need and example
+      description: Show the agent output and the proposed Markdown/HTML.
+    validations:
+      required: true
+  - type: textarea
+    id: precedent
+    attributes:
+      label: Precedent and alternatives
+      description: Link prior specifications or implementations and compare trade-offs.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Fallback, streaming, and user state
+      description: Include incomplete prefixes, final output, GFM conflicts, and identity/interaction behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: review
+    attributes:
+      label: Accessibility, security, fixtures, and open questions
+      description: Include host capabilities, parsing limits, keyboard behavior, and portable test cases.

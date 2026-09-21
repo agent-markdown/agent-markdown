@@ -1,0 +1,37 @@
+{
+  "name": "agent-markdown-draft",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun scripts/build.ts",
+    "test": "bun test",
+    "serve": "bun scripts/serve.ts",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write src scripts tests",
+    "format:check": "prettier --check src scripts tests",
+    "build:package": "bun scripts/build-package.ts",
+    "build:site": "bun scripts/build.ts --release",
+    "check:package": "bun scripts/check-package.ts",
+    "check:site": "bun scripts/check-site.ts",
+    "check": "bun run build && bun run format:check && bun run typecheck && bun test && bun run build:package && bun run check:package && bun run build:site && bun run check:site"
+  },
+  "dependencies": {
+    "dompurify": "^3.3.1",
+    "katex": "^0.16.22",
+    "markdown-it": "^14.1.0",
+    "markdown-it-footnote": "^4.0.0",
+    "mermaid": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/jsdom": "^30.0.0",
+    "@types/katex": "^0.16.7",
+    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it-footnote": "^3.0.4",
+    "jsdom": "^30.0.1",
+    "prettier": "^3.9.8",
+    "typescript": "^5.9.3"
+  },
+  "license": "MIT",
+  "packageManager": "bun@1.4.0"
+}
