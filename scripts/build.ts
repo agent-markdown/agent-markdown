@@ -51,8 +51,20 @@ await cp('node_modules/katex/dist/katex.min.css', join(out, 'katex/katex.min.css
 await cp('node_modules/katex/dist/fonts', join(out, 'katex/fonts'), { recursive: true });
 await cp('src/styles.css', join(out, 'afm.css'));
 if (release)
-  for (const name of ['index.html', 'style.css', 'media'])
+  for (const name of ['style.css', 'media'])
     await cp(join('site', name), join(out, name), { recursive: true });
+if (release) {
+  // GitHub Pages does not apply _headers. Embed supported CSP directives before assets load.
+  const policy = siteHeaders['Content-Security-Policy'].replace("; frame-ancestors 'none'", '');
+  const index = await Bun.file('site/index.html').text();
+  await Bun.write(
+    join(out, 'index.html'),
+    index.replace(
+      '<meta charset="utf-8">',
+      `<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="${policy}"><meta name="referrer" content="no-referrer">`,
+    ),
+  );
+}
 await Bun.write(
   'EXAMPLES.md',
   '# AFM examples\n\nGenerated from src/examples.ts. Live examples use the reference TypeScript renderer.\n\n' +

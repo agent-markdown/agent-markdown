@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { serveSite } from './serve';
-import { publishedDocs } from './site-config';
+import { publishedDocs, siteHeaders } from './site-config';
 import { examples } from '../src/examples';
 import { specPage } from './spec-page';
 import { resolve } from 'node:path';
@@ -78,6 +78,17 @@ for (const base of ['', '/lab/afm']) {
     if (response.status !== 200 || !response.headers.get('Content-Security-Policy'))
       throw new Error('Missing HTML or security headers');
     const dom = new JSDOM(await response.text(), { url });
+    const policy = dom.window.document.querySelector('meta[http-equiv="Content-Security-Policy"]');
+    if (
+      policy?.getAttribute('content') !==
+      siteHeaders['Content-Security-Policy'].replace("; frame-ancestors 'none'", '')
+    )
+      throw new Error('Missing static-host content security policy');
+    if (
+      dom.window.document.querySelector('meta[name="referrer"]')?.getAttribute('content') !==
+      'no-referrer'
+    )
+      throw new Error('Missing static-host referrer policy');
     const assets = Array.from(dom.window.document.querySelectorAll('[src],link[href]')).map(
       (node) => node.getAttribute('src') ?? node.getAttribute('href')!,
     );

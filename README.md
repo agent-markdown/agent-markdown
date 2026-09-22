@@ -4,6 +4,8 @@ The dialect of Markdown for interactive, rich, extensible, and streamable output
 
 **0.1 experimental draft.** Markdown first, with disclosures, activity, timers, cards, simple forms and streaming rules. HTML and attributes add optional enrichment. Features can be implemented independently.
 
+[Read the spec and try the examples](https://afm.inline.chat/).
+
 - [Specification](SPEC.md) and [component contracts](docs/semantics.md)
 - [Examples](EXAMPLES.md) and [TypeScript renderer](src/README.md)
 - [Implementation guide](guidelines/implementation.md) and [known limitations](docs/implementation-status.md)

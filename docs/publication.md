@@ -17,29 +17,33 @@ Outputs:
 
 Builds preserve previous generated directories under ignored `.build/`. Source files are never deployment output. No build or check command publishes anything.
 
-## Site
+## Website
 
-Source repository: [agent-markdown/agent-markdown](https://github.com/agent-markdown/agent-markdown). Keep the spec files and site together so examples and rules stay synchronized. Deploy the static output independently.
+[afm.inline.chat](https://afm.inline.chat/) hosts the spec and examples. Source stays in [agent-markdown/agent-markdown](https://github.com/agent-markdown/agent-markdown).
 
-**Recommended URL:** `https://afm.inline.chat/`. It needs no path routing or separate source repository. `https://inline.chat/lab/afm/` or `https://lab.inline.chat/afm/` also work: mount the same output at that prefix and redirect the prefix without its trailing slash.
+- GitHub Actions validates every change. Successful `main` builds deploy to GitHub Pages; pull requests never deploy.
+- Deployment uses GitHub's short-lived workflow identity. No external hosting token is stored in the repository.
+- The Pages custom domain is `afm.inline.chat`. Its DNS-only CNAME points to `agent-markdown.github.io` through Cloudflare DNS. GitHub manages HTTPS.
+- Only the checked `dist/afm-site.tar.gz` contents enter the deployment. The source checkout is never the upload directory.
+- The same workflow can be run manually. To roll back, revert the relevant source change and let validation/deployment finish again.
 
-Local deployment check:
+### Hosting options
+
+| Host | Fit |
+| --- | --- |
+| [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) | Selected: public static spec, deployment tied to repository checks |
+| [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) | Alternative for custom response headers or future server behavior |
+| [Vercel](https://vercel.com/docs/deployments) | Alternative when its preview/deployment workflow is already in use |
+
+The artifact is portable. Serve `dist/site/` at a root domain or a subpath with a trailing slash. Keep `spec/`, `media/`, `katex/`, `chunks/`, notices and license beside the HTML. Missing files must return 404, not the spec page.
 
 ```sh
 bun run build:site
+bun run check:site
 bun scripts/serve.ts --root dist/site --base /lab/afm --port 4318
 ```
 
-For a static host such as Cloudflare Pages:
-
-- Build: `bun install --frozen-lockfile && bun run build:site`.
-- Output: `dist/site`; Bun version: `1.4.0`.
-- Add the selected custom domain in the host, then configure its DNS.
-- Serve `_headers` rules or their equivalent. Do not rewrite missing assets to `index.html`; this site uses hash navigation and includes a 404 page.
-- Keep `spec/`, `media/`, `katex/`, `chunks/`, notices and license beside the HTML.
-- CI builds a review artifact. It does not deploy automatically or require production secrets.
-
-See [static HTML deployment](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/) and [headers](https://developers.cloudflare.com/pages/configuration/headers/).
+GitHub Pages ignores `_headers`, so the build embeds supported CSP directives and a referrer policy in the HTML before assets load. `frame-ancestors` requires an HTTP header and is not enforced by that meta policy. Preview documents retain their own sandbox and CSP. Hosts supporting `_headers` should use the supplied file for the additional response policies.
 
 ## npm
 
