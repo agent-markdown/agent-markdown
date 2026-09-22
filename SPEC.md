@@ -2,7 +2,7 @@
 
 The dialect of Markdown for interactive, rich, extensible, and streamable outputs.
 
-We're creating the AFM draft to support the new way we're using markdown as a interface across different apps. Every app is adopting similar but slightly different versions of markdown. There's conflicting behavior in renderers around streaming and interactivity. Vendor need a standard way to enrich their output with custom attributes and yet there isn't a standard in the prior markdown specs. We want AFM to become a dialect that addresses those issues and more with the help of you. This is an early draft primarily to gather feedback from the industry. The syntax and scope are still in alpha.
+AFM is a very early draft to gather feedback. We want to make syntax more consistent between agent outputs and renderers: standardize patterns already in use, keep new syntax readable in existing Markdown renderers, and allow vendor-specific blocks and attributes.
 
 **0.1 experimental draft.** Markdown first. Optional HTML and `data-afm-*` attributes add richer behavior. IDs are optional.
 
@@ -156,18 +156,16 @@ Native HTML equivalents follow the HTML profile, including `figure` / `figcaptio
 | HTML previews | Omission |
 | Media | Image, caption, or link |
 
-- Activity uses ordinary inline content or disclosures. Timers and players are optional.
 - Preserve useful content when an enhancement is unsupported. Keep essential text outside removable UI: unrelated renderers may unwrap, escape, or discard HTML.
 - An AFM exporter must not be needed for readable fallback.
 
 ## 4. Parsing
 
 - Keep baseline whitespace, escaping, indentation, and code rules. Code, attributes, link destinations, math source, and preview bodies are literal contexts.
-- Underline uses underscore flanking; `foo__bar__baz` stays literal. Three-or-more-tilde runs stay literal inline.
-- `==` and `||` follow the [inline rules](docs/semantics.md#inline-formatting).
+- Underline, strikethrough, highlight, and spoilers follow the [inline rules](docs/semantics.md#inline-formatting).
 - Disclosures contain ordinary blocks recursively. Tasks remain tasks. Only the defined [short alias](docs/semantics.md#disclosures-and-mixed-content) changes quote parsing.
 - Put blank lines around Markdown inside HTML containers, or use HTML children. `summary` accepts inline Markdown.
-- File links support relative/absolute paths and `file://` URLs, with an optional one-based `:line`; the host resolves them.
+- Hosts resolve [file links and line locations](docs/semantics.md#file-links-and-line-locations).
 - Fence identifiers: `math`, `mermaid`, `diff`, `html`. HTML fences stay code. Preserve source separately from its rendered view.
 
 ## 5. Streaming
@@ -181,13 +179,12 @@ Native HTML equivalents follow the HTML profile, including `figure` / `figcaptio
 - Preserve edits, focus/selection, expansion, and pending/submitted results across appends. Reordering needs host identity; authored IDs remain optional.
 - Interruption keeps a safe prefix, disables uncommitted actions, and hides unfinished live timers. It does not assign activity state.
 - Final output must match one-shot parsing of the original source under the same host policy. Exclude clock values, generated IDs, and user state from byte comparisons.
-
 - Earlier content may change as context arrives. Timing, animation, and parser architecture belong to the host.
 
 ## 6. Extensions and actions
 
-- Use native attributes where they fit, `data-afm-*` for shared additions, and `data-<provider>-*` for provider data. See the [attribute table](docs/semantics.md#attributes-and-identity).
-- IDs are optional and document-local. Unknown widgets preserve safe children unless AFM-aware omission is requested.
+- Attribute names and optional IDs follow [Attributes and identity](docs/semantics.md#attributes-and-identity).
+- Unknown widgets preserve safe children unless `data-afm-fallback="omit"` requests removal.
 - Extensions cannot redefine shared behavior or grant permissions.
 - Actions require registered handlers and host validation. Rendering, disclosures, timers, and diffs do not execute actions.
 - Preview attributes cannot enable scripts, network, or a host bridge. Transport, permissions, and tool execution are outside AFM.
@@ -204,11 +201,10 @@ Native HTML equivalents follow the HTML profile, including `figure` / `figcaptio
 | Unsafe HTML/URL | Apply host sanitization/URL policy |
 | Resource limit | Documented stop/degradation; report incomplete rendering |
 
-- Publish source, nesting, and work limits. Recursive grammar does not require unlimited resources.
+- Publish limits for source size, nesting, and processing work. Recursive grammar does not require unlimited resources.
 - Preserve labels, reading order, keyboard access, and control state. Avoid repeated timer announcements; respect reduced motion.
 - Styling belongs to the renderer.
 
 ## 8. Draft status
 
-- [Implementation status](docs/implementation-status.md) tracks evidence and unresolved edges. Reference tests are not independent conformance or security review.
-- Submit changes through [CONTRIBUTING.md](CONTRIBUTING.md); [future proposals](FUTURE.md) do not change current rules.
+See [implementation status](docs/implementation-status.md) for coverage and known gaps. Use the [proposal process](CONTRIBUTING.md) to suggest changes.

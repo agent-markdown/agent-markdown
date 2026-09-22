@@ -2,6 +2,41 @@
 
 MIT covers the authored code, spec, examples and website. The generated site includes third-party notices. The root package is marked `private` to prevent accidental npm publication; only `dist/package/` is the npm package. Repository source is public.
 
+## Edit the text
+
+| Text | Source |
+| --- | --- |
+| Introduction, tagline, syntax table, general rules | `SPEC.md` |
+| Component rules and attribute tables | `docs/semantics.md` |
+| Example source, titles, descriptions | `src/examples.ts` |
+| Closing implementation guide | `guidelines/implementation.md` |
+| Short future section / full proposal list | `site/future.md` / `FUTURE.md` |
+| Page title, header, version, search description | `site/index.html` |
+| Navigation labels and closing inspiration note | `src/app.ts` |
+
+The website assembles these files at build time. Edit sources, not `dist/`, `src/content.generated.ts`, or generated `EXAMPLES.md`. Changing a level-two rule heading also requires updating its mapping in `scripts/spec-page.ts`.
+
+```sh
+bun install --frozen-lockfile
+bun run build:site
+bun run check:site
+bun run serve --root dist/site --port 4317
+```
+
+Open `http://127.0.0.1:4317/`. After each edit, rerun `bun run build:site` and refresh; the server does not rebuild automatically.
+
+## Deploy edits
+
+Run `bun run check`, stage only the source files you changed, commit, and push to `main`. Include generated `EXAMPLES.md` when changing examples. For a spec-only edit:
+
+```sh
+git add SPEC.md
+git commit -m "docs: refine the AFM draft"
+git push origin main
+```
+
+The [Actions workflow](https://github.com/agent-markdown/agent-markdown/actions/workflows/check.yml) validates and deploys automatically. Markdown text can also be edited on GitHub; commit to `main` or merge a pull request. Example changes need a local build to regenerate `EXAMPLES.md`.
+
 ## Build and review
 
 ```sh

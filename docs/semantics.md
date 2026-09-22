@@ -10,9 +10,9 @@ Part of [SPEC.md](../SPEC.md). These rules apply to supported features. Examples
 | Attribute | Element | Values |
 | --- | --- | --- |
 | `data-afm-type` | `details`/`span`, `section`, `form` | `activity`, `card`, `choices`, or provider-qualified type |
-| `data-afm-kind` | Activity/disclosure | Kind below, or provider-qualified kind |
+| `data-afm-kind` | Activity/disclosure | Activity kind or provider-qualified kind |
 | `data-afm-summary` | `details` | `latest`: project the latest child label |
-| `data-afm-state` | Activity/disclosure/time | State below |
+| `data-afm-state` | Activity/disclosure/time | Activity state |
 | `data-afm-format` | `time` | `elapsed`, `active`, `duration`, `countdown` |
 | `data-afm-end` | Elapsed timer | End timestamp |
 | `data-afm-elapsed` | Active timer | Accumulated seconds |
@@ -21,7 +21,7 @@ Part of [SPEC.md](../SPEC.md). These rules apply to supported features. Examples
 | `data-afm-fallback` | Provider widget | `omit` when unsupported |
 | `data-<provider>-*` | Extension | Provider data |
 
-- Shared values are case-sensitive. Unknown values add no meaning. Missing attributes retain normal element behavior, subject to host policy and the timer rules below.
+- Shared values are case-sensitive. Unknown values add no meaning. Missing attributes retain normal element behavior, subject to host policy and timer rules.
 - Provider types use names such as `inline:changes`. They cannot redefine shared attributes. No bare `afm-*` alias is defined.
 - IDs are optional, document-local, and preferably unique/stable. Preserve user state across unrelated appends.
 - Replacing a question needs a new identity or host reset. IDs never grant authority.
@@ -119,7 +119,7 @@ Long/mixed highlight and spoiler runs still need [independent fixtures](implemen
 - Countdown continues through pauses, disappears for terminal states, and never triggers an action. Duration stays fixed.
 - Replay/interruption hides unfinished live counters; fixed values remain usable. State comes from the timer or nearest activity. Hosts handle clocks/localization.
 
-**Reference note:** `live:false` selects replay. Strict timestamp/duration validation remains in [implementation status](implementation-status.md#grammar-edges-open-for-review).
+**Reference note:** `live:false` selects replay. Timestamp and duration syntax still have [open edges](implementation-status.md#grammar-edges-open-for-review).
 
 ## Cards and forms
 

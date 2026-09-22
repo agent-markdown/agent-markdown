@@ -23,6 +23,8 @@ Open [the local spec](http://127.0.0.1:4317). Examples show source, rendered out
 
 `bun run build:site` creates the deployable `dist/site/`. `bun run build:package` creates a local renderer tarball. See [distribution instructions](docs/publication.md). These commands do not publish anything.
 
+For text changes, see [which files to edit](docs/publication.md#edit-the-text). Pushing to `main` deploys the website after checks pass.
+
 ## Discussion
 
 Propose changes through [issues](https://github.com/agent-markdown/agent-markdown/issues) or [Discussions](https://github.com/agent-markdown/agent-markdown/discussions). Include an example, prior art, fallback and streaming behavior. The draft and reference API may change before a stable release.

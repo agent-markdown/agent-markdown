@@ -166,7 +166,9 @@ function documentBody(markdown: string, origin = 'SPEC.md') {
     'docs/semantics.md#inline-formatting': 'formatting-rules',
     'docs/semantics.md#disclosures-and-mixed-content': 'disclosure-rules',
     'docs/semantics.md#attributes-and-identity': 'attributes',
-    'FUTURE.md': 'future',
+    'docs/semantics.md#file-links-and-line-locations': 'file-links-rules',
+    // The summary's final link opens the full list, not the summary itself.
+    'FUTURE.md': origin === 'site/future.md' ? '' : 'future',
   };
   const exampleAnchors = new Map(
     examples.map((item) => [
@@ -248,7 +250,7 @@ appendDocument('future', 'Future proposals', documents.future, 'site/future.md')
 const references = document.createElement('p');
 references.className = 'references';
 references.innerHTML =
-  'Markdown-it shows standard Markdown with HTML wrappers stripped and controls omitted. Inspired by <a href="https://github.github.com/gfm/">GFM</a>, <a href="https://core.telegram.org/bots/api#formatting-options">Telegram</a>, <a href="https://help.obsidian.md/syntax">Obsidian</a>, and <a href="https://github.com/nodes-app/swift-markdown-engine">Nodes</a>.';
+  'Inspired by <a href="https://github.github.com/gfm/">GFM</a>, <a href="https://core.telegram.org/bots/api#formatting-options">Telegram</a>, <a href="https://help.obsidian.md/syntax">Obsidian</a>, and <a href="https://github.com/nodes-app/swift-markdown-engine">Nodes</a>.';
 main.append(references);
 const jump = () => {
   const id = location.hash.slice(1).replace(/^examples\//, '');
