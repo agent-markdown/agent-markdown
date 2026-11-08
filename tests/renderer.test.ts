@@ -131,6 +131,13 @@ describe('AFM reference semantics', () => {
     expect(frame.srcdoc).toContain("default-src 'none'");
     expect(frame.srcdoc).toContain('Review lab');
   });
+  test('preview source cannot grant scripts', () => {
+    renderer().render('<iframe title="Lab" sandbox="allow-scripts"><p>Body</p><script>parent.x = 1</script></iframe>');
+    const frame = host.querySelector('iframe')!;
+    expect(frame.getAttribute('sandbox')).toBe('');
+    expect(frame.srcdoc).not.toContain('<script');
+    expect(frame.srcdoc).toContain('Body');
+  });
   test('HTML source fence never previews', () => {
     renderer().render(examples.find((e) => e.id === 'source')!.source);
     expect(host.querySelector('iframe,button')).toBeNull();

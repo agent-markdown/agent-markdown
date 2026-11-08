@@ -92,7 +92,7 @@ export const examples: Example[] = [
   {
     id: 'preview',
     title: 'HTML preview lab',
-    description: 'An isolated interface. Try its tabs and disclosure; no scripts or network.',
+    description: 'An isolated interface. Try its tabs and disclosure; no scripts or network. A host may grant previews from producers it trusts scripts and a bridge by its own policy; the source stays the same.',
     source:
       '<iframe title="Review lab" sandbox>\n<!doctype html>\n<html lang="en">\n<head><style>\nbody { font: 13px/1.6 system-ui; color: #333; margin: 16px; }\nnav { display: flex; gap: 16px; border-bottom: 1px solid #ddd; padding-bottom: 8px; }\nlabel { cursor: pointer; } input { accent-color: #666; }\narticle { padding-top: 12px; } p { margin: 8px 0; }\n.patch { display: none; }\nbody:has(#patch:checked) .summary { display: none; }\nbody:has(#patch:checked) .patch { display: block; }\ncode { font: 12px/1.6 ui-monospace, monospace; }\nsummary { cursor: pointer; }\n</style></head>\n<body>\n<strong>Review lab</strong>\n<nav aria-label="Preview view">\n<label><input type="radio" name="view" checked> Summary</label>\n<label><input type="radio" name="view" id="patch"> Changes</label>\n</nav>\n<article class="summary">\n<p>Streaming now reveals readable text as it arrives.</p>\n<details><summary>Checks</summary><p>Tasks, disclosures, and literal code remain distinct.</p></details>\n</article>\n<article class="patch"><code>− waitForBlock(source)<br>+ projectStreamingSyntax(source)</code></article>\n</body>\n</html>\n</iframe>',
   },

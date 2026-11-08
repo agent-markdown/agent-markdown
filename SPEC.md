@@ -187,7 +187,7 @@ Native HTML equivalents follow the HTML profile, including `figure` / `figcaptio
 - Unknown widgets preserve safe children unless `data-afm-fallback="omit"` requests removal.
 - Extensions cannot redefine shared behavior or grant permissions.
 - Actions require registered handlers and host validation. Rendering, disclosures, timers, and diffs do not execute actions.
-- Preview attributes cannot enable scripts, network, or a host bridge. Transport, permissions, and tool execution are outside AFM.
+- Preview source cannot enable scripts, network, or a host bridge; only [host policy](docs/semantics.md#content-and-optional-renderers) can grant them. Transport, permissions, and tool execution are outside AFM.
 
 ## 7. Errors and limits
 

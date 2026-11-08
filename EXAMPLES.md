@@ -344,7 +344,7 @@ flowchart LR
 
 ## HTML preview lab
 
-An isolated interface. Try its tabs and disclosure; no scripts or network.
+An isolated interface. Try its tabs and disclosure; no scripts or network. A host may grant previews from producers it trusts scripts and a bridge by its own policy; the source stays the same.
 
 ````markdown
 <iframe title="Review lab" sandbox>

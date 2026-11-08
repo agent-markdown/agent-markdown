@@ -149,7 +149,10 @@ Long/mixed highlight and spoiler runs still need [independent fixtures](implemen
 | Audio/video | Ordinary links or HTML `audio`/`video`/`source`/`track`. Controls belong to the renderer. |
 
 - The first fence info-string word identifies the format. No AFM options are defined for remaining words.
-- The first case-insensitive closing iframe tag ends its payload; avoid literal occurrences inside. Preview source cannot enable scripts, network, navigation, or a host bridge.
+- The first case-insensitive closing iframe tag ends its payload; avoid literal occurrences inside.
+- Previews are static by default. Preview source and attributes, including `sandbox`, cannot enable scripts, network, navigation, or a host bridge.
+- A host MAY grant previews scripts and a host-defined bridge by its own policy, such as for producers it trusts. The grant never comes from the source. A granted preview stays isolated from the host document and from other previews, actions through its bridge require user activation, and the host documents what it grants.
+- `title` labels the preview. `id` keeps its identity, and any granted state, across revisions. `height` is an initial height in CSS pixels; a host may resize to the content.
 - Footnote labels are separate from HTML IDs. Use unique, nonempty labels without whitespace. Duplicate/case recovery remains an open edge; structured provenance is future work.
 - Keep download/transcript links outside removable players. Media waits for closure; preserve playback across unrelated appends.
 - Albums are ordered images/figures. Optional [tool/resource data](../guidelines/host-data.md) stays outside the grammar.

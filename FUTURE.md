@@ -9,6 +9,7 @@ These topics are open for discussion, not additional v0.1 requirements. The curr
 - Approval expiry, retries and coordinated actions through host adapters.
 - Citation ranges and structured provenance.
 - Multi-question forms, richer validation and menus.
-- HTML conversion, source-preserving round trips and optional preview bridges.
+- HTML conversion and source-preserving round trips.
+- A shared vocabulary for host-granted preview bridges (copy, follow-up prompt, action).
 
 Use the [proposal template](CONTRIBUTING.md) with a concrete need, existing precedent, alternatives and fixtures. No new syntax is selected here.
